@@ -12,7 +12,8 @@ namespace wpfImagesOperationsLibrary
     {
         public static BitmapSource ByteArrayToBitmapSource(byte [] array, int width, int height, int bitsPerPixel)
         {
-            return BitmapSource.Create(width, height, 96, 96, PixelFormats.Bgra32, null, array, width * bitsPerPixel);
+            int stride = width * ((bitsPerPixel + 7) / 8);
+            return BitmapSource.Create(width, height, 96, 96, PixelFormats.Bgra32, null, array, stride);
         }
     }
 }
